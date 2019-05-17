@@ -1,0 +1,338 @@
+.container {
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
+    background-color: #fafafa;
+}
+
+.container > div {
+    position: relative;
+    width: 700px;
+    padding: 0px 60px;
+    margin: 0 auto;
+}
+
+
+
+.container > div > span {
+    display: block;
+    padding-left: 1rem;
+    width: 100%;
+    color: rgba(0,0,0,.68);
+    letter-spacing: 0.03rem;
+    font-weight: bold;
+}
+
+.container > div > span:not(:first-of-type) {
+    margin-top: 50px;
+}
+
+.container > div > span::before {
+    display: block;
+    content: '';
+    position: absolute;
+    margin-top: -5px;
+    width: 50px;
+    height:5px;
+    
+}
+
+.container > div > span:nth-of-type(1)::before {
+    background-color: #35ad45;
+}
+
+.container > div > .hotResponseTitle::before {
+    background-color: #cf5a5f;
+}
+
+.container > div > .newResponseTitle::before {
+    background-color: #ccc;
+}
+
+.myResponseContainer {
+    position: relative;
+    margin: 20px 0px;
+    padding: 20px 20px;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px #e1e1e1;
+    border-radius: 4px;
+}
+
+.myProfile {
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.myProfile > img {
+    /*display: inline-block;*/
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.myProfile > span {
+    display: inline-block;
+    margin-left: 10px;
+    height: 100%;
+    line-height: 50px;
+    width: calc(100% - 200px);
+    overflow: hidden;
+    color: #cf5a5f;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.myProfile > button {
+    float: right;
+    width: 100px;
+    height: 35px;
+    font-size: 0.9rem;
+    border: 1px solid #cf5a5f;
+    color: #cf5a5f;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.myProfile > button:hover {
+    color: white;
+    background-color: #cf5a5f;
+}
+
+.myCommentEditor {
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    min-height: 80px;
+    background-color: white;
+}
+
+.myCommentEditor section p:first-child:empty:not(:focus)::before {
+    content:attr(data-placeholder);
+    color: #ccc;
+}
+
+.hotResponseContainer, .newResponseContainer {
+    position: relative;
+    width: 100%;
+}
+
+.hotResponseContainer > div, .newResponseContainer > div {
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0px;
+    padding: 20px 20px 15px 20px;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px #e1e1e1;
+    border-radius: 4px;
+
+}
+
+.commentInfo {
+    width: 100%;
+    height: 50px;
+}
+
+.commentInfo .commentors {
+    height: 100%;
+    float:left;
+} 
+.commentInfo .commentors > img {
+    /*display: inline-block;*/
+    float:left; 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.commentInfo .commentors > span {
+    display: inline-block;
+    margin-left: 10px;
+    height: 100%;
+    line-height: 50px;
+    overflow: hidden;
+    color: #cf5a5f;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.commentInfo .commentors > span:nth-of-type(odd) {
+    cursor: pointer;
+}
+
+.commentInfo .commentors > span:nth-of-type(2) {
+    color: #666;
+}
+
+.commentInfo .commentSide {
+    float:right;
+    height: 50px;
+    line-break: 50px;
+}
+
+.commentInfo .commentSide > span {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.spanColor {
+    color: #cf5a5f;
+}
+
+.spanNoColor {
+    color: #666;
+}
+
+.spanNoColor:hover {
+    color: #bbb;
+}
+
+.commentInfo .commentSide > span:nth-of-type(even) {
+    font-size: 0.9rem;
+    cursor: default;
+}
+
+.commentContent {
+    width: 100%;
+    font-size: 1rem;
+    color: #333;
+    letter-spacing: 0.03rem;
+    margin-top: 10px;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.commentContent > span {
+    display: block;
+}
+
+.commentDate {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 0.8rem;
+    color: #999;
+    letter-spacing: 0.03rem;
+}
+
+
+.dupComment {
+    border-top: 1px solid #e1e1e1;
+    margin-top: 10px;
+    width: 100%;
+    background-color: white;
+    padding-top: 10px;
+}
+
+.dupComment > div:first-child {
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    background-color: white;
+}
+
+.dupComment > div:first-child section p:first-child:empty:not(:focus)::before {
+    content:attr(data-placeholder);
+    color: #ccc;
+}
+
+.dupComment > div:last-child {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    background-color: white;
+    overflow: hidden;
+}
+.dupComment > div:last-child > button {
+    float: right;
+    width: 100px;
+    height: 35px;
+    font-size: 0.9rem;
+    border: 1px solid #cf5a5f;
+    color: #cf5a5f;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.dupComment > div:last-child > button:hover {
+    color: white;
+    background-color: #cf5a5f;
+}
+
+.showMoreCommentsButton {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #cf5a5f;
+    color: #cf5a5f;
+    background-color: white;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.showMoreCommentsButton:hover {
+    background-color: #cf5a5f;
+    color: white;
+}
+
+.deleteCommentButton {
+    position: absolute;
+    display: block;
+    right: -30px;
+    top: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(100, 100, 100, 0.6);
+    cursor: pointer;
+}
+.deleteCommentButton:hover {
+    background-color: #cf5a5f;
+}
+.deleteCommentButton::before {
+    content: 'x';
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    color: #fafafa;
+}
+@media (max-width: 700px) {
+    .container > div {
+        position: relative;
+        width: 100%;
+        padding: 0px 60px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container > div {
+        position: relative;
+        width: 100%;
+        padding: 0px 10px;
+        margin: 0 auto;
+    }
+
+    .commentInfo .commentSide {
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        line-break: 50px;
+        margin-top: 10px;
+    }
+
+    .commentInfo .commentSide > span:not(:first-child) {
+        margin-left: 15px;
+    }
+}

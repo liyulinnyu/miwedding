@@ -1,0 +1,257 @@
+.container {
+    position: relative;
+    top:0;
+    left:0;
+    width:100%;
+    height: auto;
+    /*box-shadow: 0 -2px 5px 5px inset #eee;
+    */
+    /*margin-top: calc(0px - 40px - 4vw);*/
+}
+
+.carouselContainer{
+    position: relative;
+    width:100%;
+    margin-top: 100px;
+    height: calc(400px + 2vw);
+    padding: 50px 0 40px 0;
+}
+
+.findMoreButtonForCarouse {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.findMoreButtonForCarouse > button {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgb(207,90,95);
+    color: white;
+    background-color: rgb(207,90,95);
+    cursor: pointer;
+    letter-spacing: 0.03rem;
+}
+
+.plainContainer {
+    position: relative;
+    margin-top: 50px;
+    width: 100%;
+    padding: 0.5rem 6.5vw;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+
+
+.plainContainer > div:last-child {
+    position: relative;
+    width: 100%;
+}
+
+.plainContainer > div:last-child > div {
+    position: relative;
+    width: 33.33%;
+    float:left;
+    height:calc(50px + 20vw);
+    max-height: 200px;
+    text-align: center;
+}
+
+.plainContainer > div:last-child > div > span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    color: #e1e1e1;
+}
+
+
+@media (max-width:700px) {
+    .plainContainer {
+        padding: 0 0;
+    }
+
+}
+
+.textContainer {
+    position: relative;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.textContainer > span {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-size: 1.8rem;
+    font-family: 'Courier New', Courier, monospace;
+    width: 25ch; /* fallback */
+    white-space: nowrap;
+    border-right: 2px solid #999;
+    overflow: hidden;
+    animation: typing 5s steps(25, end) infinite, shinning 0.8s infinite;
+}
+
+.textContainer > button {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: rgb(207,90,95);
+    border: 1px solid rgb(207,90,95);
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    letter-spacing: 0.03rem;
+}
+
+.placeContainer {
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.placeContainer .placeLeftDiv {
+    display: inline-grid;
+    width: 90%;
+    margin-left: 5%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 5%;
+}
+
+.placeContainer .placeLeftDiv > div {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: calc(75px + 10vw - 10px);
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.placeContainer .placeLeftDiv > div > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.placeContainer .placeLeftDiv > div > span {
+    position: absolute;
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    top:0; left:0;
+    background-color: rgba(100, 100, 100, 0.3);
+    border: 1px solid #aaa;
+    color: white;
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: calc(75px + 10vw - 10px);
+    transition: all 0.3s ease-in-out;
+}
+
+.placeContainer .placeLeftDiv > div > span:hover {
+    transform: scale(1.1);
+    background-color: rgba(150, 150, 150, 0.3);
+}
+
+.placeContainer .placeRightDiv {
+    display: none;
+    float: right;
+    margin-right: 5%;
+    width: 44%;
+    background: url("../../images/static/romantic-wedding-flowers.jpg");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    height: calc(50px + 20vw);
+    border-radius: 8px;
+}  
+
+
+
+.placeContainer .placeRightDiv > span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.6);
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.placeContainer .placeRightDiv > span > p {
+    position: relative;
+    font-family:  Consolas, Monaco, monospace;
+    display: inline-block;
+    color: white;
+    margin: 0 auto;
+    width: 30ch; /* fallback */
+    white-space: nowrap;
+    height: 2rem;
+    margin-top: calc(25% - 0.5rem);
+    border-right: 2px solid white;
+    overflow: hidden;
+    animation: typing 5s steps(30, end) infinite, shinning 0.5s infinite;
+}
+@keyframes typing { 
+    0% { width: 0; }
+    90% {width: 25ch;}
+    100% {width: 0;}
+}
+@keyframes shinning {50% {border-right:transparent;}}
+
+@media (max-width:900px) {
+    .placeContainer .placeLeftDiv {
+        position: relative;
+        display: grid;
+        width: 90%;
+        margin-left: 5%;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5%;
+    }
+
+    .placeContainer .placeLeftDiv > div {
+        height: calc(50px + 13vw);
+    }
+
+    .placeContainer .placeLeftDiv > div > span {
+        line-height: calc(50px + 13vw);
+        font-size: 0.9rem;
+    }
+
+    .placeContainer .placeRightDiv {
+        position: relative;
+        float: none;
+        display: none;
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 90%;
+        height: calc(50px + 20vw);
+        border-radius: 8px;
+        margin-bottom: 150px;
+    }  
+
+    .placeContainer .placeRightDiv > span {
+        font-size: 1.2rem;
+    }
+
+    .placeContainer .placeRightDiv > span > p {
+        height: 1.8rem;
+        margin-top: calc(20% - 5vw);
+    }
+}
+
+
+
+
+.geoLoading {
+    position: absolute;
+    background-color: transparent;
+    margin-left: calc(50% - 20px - 5vw);
+    margin-top: calc(0px + 4vw);
+    width: calc(40px + 10vw);
+    height: calc(40px + 10vw);
+}

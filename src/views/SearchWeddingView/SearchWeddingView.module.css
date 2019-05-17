@@ -1,0 +1,112 @@
+.container {
+    position: relative;
+    top:0;
+    left:0;
+    width:100%;
+    height: auto;
+}
+
+.content {
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    padding: 30px 0;
+}
+
+.content > span {
+    position: relative;
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    
+    margin-bottom: 20px;
+}
+
+.weddingContainer {
+    width: 100%;
+    position: relative;
+}
+
+.singleWeddingContainer {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.singleWeddingContainer > div:first-child {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.singleWeddingContainer > div:first-child > img {
+    width: 100%;
+    height: 100%;
+}
+
+.singleWeddingContainer > div:last-child {
+    width: 100%;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.paginateContainer {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 8rem;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+.paginateContainer :global(.pagination) > li > a, .paginateContainer :global(.pagination)>li>span {
+    color: rgb(207,90,95);
+}
+
+
+:global(.pagination)>:global(.active)>a, 
+:global(.pagination)>:global(.active)>a:focus, 
+:global(.pagination)>:global(.active)>a:hover, 
+:global(.pagination)>:global(.active)>span, 
+:global(.pagination)>:global(.active)>span:focus, 
+:global(.pagination)>:global(.active)>span:hover {
+    z-index: 3;
+    color: #fff !important;
+    cursor: default;
+    background-color: rgb(207,90,95) !important;
+    border-color: rgb(207,90,95)!important;
+}
+
+
+@media (max-width: 600px) {
+    .paginateContainer {
+        padding:0 1rem;
+    }
+    .content {
+        width:100%;
+    }
+}
+
+.geoAnimation {
+    position: absolute;
+    background-color: transparent;
+    margin-left: calc(50% - 20px - 5vw);
+    margin-top: calc(0px + 4vw);
+    width: calc(40px + 10vw);
+    height: calc(40px + 10vw);
+}
+
+.contentAnimation {
+    position: relative;
+    background-color: transparent;
+    margin-left: calc(50% - 25px - 5vw);
+    margin-top: calc(0px + 4vw);
+    width: calc(50px + 10vw);
+    height: calc(50px + 10vw);
+}

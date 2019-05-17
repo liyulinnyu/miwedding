@@ -1,0 +1,232 @@
+.container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    top: 100px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: #fafafa;
+    top: -100px;
+    left: 0;
+    height: 150px;
+}
+
+.header > div {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    top: -37.5px;
+}
+
+
+
+.userImageContainer {
+    position: relative;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.userImageContainer > input[type=file] {
+    display: none;
+}
+
+.userImageContainer > img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.header > div > div {
+    display: inline-block;
+}
+
+.header > div > div:last-child {
+    float: right;
+    width: calc(100% - 200px);
+    height: 175px;
+}
+
+.userInfoContainer, .userWeddingContainer {
+    width: 100%;
+    height: 50%;
+    padding-left: 20px;
+}
+
+.userInfoContainer {
+    line-height: calc(175px / 2);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.userInfoContainer > .passwordContainer {
+    margin-left: 30px;
+    font-size: 0.9rem;
+    color: #999;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    font-weight: 400;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.userInfoContainer > .passwordContainer:hover {
+    background-color: #ddd;
+}
+
+
+.userWeddingContainer {
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 5px;
+    align-content: flex-end;
+}
+
+.userWeddingContainer > span {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #111;
+    border: 1px solid #111;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.userWeddingContainer > span:hover {
+    background-color: #ca484e;
+    border: 1px solid #ca484e;
+}
+
+.active {
+    background-color: #ca484e !important;
+    border: 1px solid #ca484e !important;
+}
+
+
+.content {
+    top: 100px;
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.ownWeddingContainer {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.singleWeddingContainer {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.singleWeddingContainer > div:first-child {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.singleWeddingContainer > div:first-child > img {
+    width: 100%;
+    height: 100%;
+}
+
+.singleWeddingContainer > div:last-child {
+    width: 100%;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.singleWeddingContainer > div:last-child > span {
+    display: inline-block;
+    padding: 10px 0;
+    color: #666;
+}
+
+.singleWeddingContainer .deleteButton {
+    position: absolute;
+    display: block;
+    right: -30px;
+    top: -30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(100, 100, 100, 0.6);
+}
+.singleWeddingContainer .deleteButton:hover {
+    background-color: #cf5a5f;
+}
+.singleWeddingContainer .deleteButton::before {
+    content: 'x';
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    color: #fafafa;
+}
+
+@media (max-width: 600px) {
+    .header > div {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        top: -37.5px;
+        padding: 0 10px;
+    }
+    .userInfoContainer {
+        line-height: 0;
+    }
+    .userInfoContainer > span:first-child {
+        float: left;
+    }
+    .userInfoContainer > .passwordContainer {
+        float:left;
+        height: 30px;
+        text-align: center;
+        line-height: 15px;
+        margin-top: 2rem;
+        margin-left: 0px;
+    }
+
+    .ownWeddingContainer {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .singleWeddingContainer > div:first-child {
+        width: 100%;
+        height: calc(150px + 10vw);
+    }
+}
+
+
+.contentLoading {
+    position: absolute;
+    background-color: transparent;
+    margin-left: calc(50% - 20px - 5vw);
+    margin-top: calc(0px + 4vw);
+    width: calc(40px + 10vw);
+    height: calc(40px + 10vw);
+}

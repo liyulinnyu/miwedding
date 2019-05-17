@@ -1,0 +1,445 @@
+.container {
+    position: relative;
+    top:0;
+    left:0;
+    width: 100%;
+    min-height: calc(100vh - 40px);
+    overflow-y: hidden;
+    text-align: center;
+    padding-top:50px;
+    margin-bottom: 50px;
+}
+
+.previewButton {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #cf5a5f;
+    color: white;
+    line-height: 50px;
+    font-size: 0.9rem;
+    text-align: center;
+    left: 80%;
+    z-index: 50;
+    top: 200px;
+    cursor: pointer;
+}
+
+.previewButton:hover {
+    background-color: #ac4a4f;
+}
+
+.previewButton::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 300px;
+    top: -300px;
+    left: 50%;
+    background-color: #cf5a5f;
+}
+
+.dragPreviewString {
+    animation: dragString 1s ease-out forwards;
+}
+
+@keyframes dragString {
+    0% {
+        top: 200px;
+    }
+    50% {
+        top: 230px;
+    }
+    80% {
+        top: 190px;
+    }
+    90% {
+        top: 205px;
+    }
+    100% {
+        top: 200px;
+    }
+}
+
+.title {
+    position: relative;
+    display: block;
+    width: 700px;
+    margin: 0 auto;
+    min-height: 50px;
+    padding: 0 60px;
+    color: #222;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.7rem;
+    font-weight: 450;
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    text-align: left;
+}
+
+.title:empty:not(:focus)::before {
+    content:attr(data-placeholder);
+    color: #ccc;
+}
+
+.detailContent {
+    position: relative;
+    display: block;
+    top: 20px;
+    width: 700px;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.detailContent > table {
+    width: 100%;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.detailContent > table > thead td {
+    background-color: #bbb;
+    font-weight: 600;
+}
+
+.detailContent > table td {
+    height: 35px;
+}
+
+.detailContent > table > tbody td {
+    border-bottom: 1px solid #bbb;
+}
+
+.detailContent > table > tbody td > select {
+    max-width: 50px;
+    height: 100%;
+    border: transparent;
+    color: #666;
+}
+
+.detailContent > table > tbody td > input[type=date] {
+    height: 100%;
+    border: transparent;
+    color: #666;
+}
+
+.detailContent > table > tbody td > input[type=text] {
+    height: 100%;
+    color: #666;
+    border: transparent;
+    text-align: center;
+    max-width: 80px;
+}
+
+
+.backgroundImgContainer {
+    position: relative;
+    width: 100%;
+    width: 700px;
+    margin: 0 auto;
+    padding: 0 60px;
+    margin-top: 40px;
+}
+
+.backgroundImgContainer > button {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #cf5a5f;
+    border-radius: 4px;
+    color: #cf5a5f;
+    background-color: white; 
+    cursor: pointer;
+}
+.backgroundImgContainer > button:hover {
+    background-color: #cf5a5f;
+    color: white;
+}
+
+.backgroundImgContainer > input[type=file] {
+    display: none;
+}
+
+.backgroundImgContainer > div {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.backgroundImgContainer > div > img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+}
+.backgroundImgContainer > div > span {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(100, 100, 100, 0.5);
+    right: -25px;
+    top: -25px;
+    z-index: 10;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.backgroundImgContainer > div > span::before {
+    content: 'x';
+    position: absolute;
+    top: 22.5px;
+    left: 12.5px;
+}
+
+.backgroundImgContainer > div > span:hover {
+    background-color: #cf5a5f;
+    color: white;
+}
+
+.customContent {
+    position: relative;
+    width: 700px;
+    margin: 0 auto;
+    padding: 0 60px;
+    top: 50px;
+    min-height: 300px; 
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.customContent section {
+    width: 100%;
+    min-height: 30px;
+    margin-bottom: 50px;
+}
+
+.customContent section p:first-child:empty:not(:focus)::before {
+    content:attr(data-placeholder);
+    color: #ccc;
+}
+
+.customContent section > p {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+    font-style: normal;
+    font-size: 21px;
+    color: #666;
+    letter-spacing: 0.003em;
+    word-spacing: 0.05rem;
+    margin-block-start: 0em;
+    margin-block-end: 0.5em;
+}
+
+
+.confirmCreate {
+    position: relative;
+    width: 600px;
+    height: 50px;
+    cursor: pointer;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+    font-size: 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.confirmCreate:hover {
+    border:1px solid #cf5a5f;
+    background-color: #cf5a5f;
+    color: white;
+}
+
+.confirmCreate:disabled {
+    cursor: not-allowed;
+    background-color: #aaa;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+
+.controlButtonContainer {
+    position: absolute;
+    min-width: 40px;
+    max-width: 100%;
+    height: 40px;
+    left: calc(50% - 350px + 10px);
+    background-color: rgba(255,255,255,0.5);
+}
+
+.controlButtonContainer > div:first-child {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 3px #efefef;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.controlButtonContainer > div:last-child {
+    display: inline-block;
+}
+
+.controlButtonContainer > div:last-child > span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 3px #efefef;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-left: 15px;
+    background-color: white;
+}
+
+.controlButtonGoAni {
+    animation: goAni 0.1s linear forwards;
+}
+
+@keyframes goAni {
+    from {transform: rotateZ(0)}
+    to {transform: rotateZ(45deg)}
+}
+
+.controlButtonBackAni {
+    animation: backAni 0.1s linear forwards;
+}
+
+@keyframes backAni {
+    from {transform: rotateZ(45deg)}
+    to {transform: rotateZ(0deg)}
+}
+
+
+
+.fileInput {
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+}
+
+.imgContainer {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-gap: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.imgContainer > img {
+    max-width: 100%;
+}
+
+
+.controlButtonContainer .linkEditor {
+    float: right;
+    width: 200px;
+    padding-left: 10px;
+    background-color: #f5f5f5;
+}
+
+.controlButtonContainer .linkEditor > input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 5px;
+    padding-left: 1rem;
+    color: #333;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    border-bottom: 1px solid #ccc;
+}
+
+.controlButtonContainer .linkEditor > input::-moz-placeholder,
+.controlButtonContainer .linkEditor > input::-webkit-input-placeholder {
+    color: #bbb;
+}
+
+.controlButtonContainer .linkEditor > .confirmClickButton {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 0%;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #35ad45;
+    box-shadow: 0px 0px 0px 0px;
+    margin:0;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.controlButtonContainer .linkEditor > .confirmClickButton:hover {
+    background-color: #2d923a;
+}
+
+
+.alignLeft {
+    text-align: left !important;
+}
+
+.alignCenter {
+    text-align: center !important;
+}
+
+.alignRight {
+    text-align: right !important;
+}
+
+.textItalic {
+    font-style: italic !important;
+}
+
+.textBold {
+    font-weight: bold !important;
+}
+
+.textSize {
+    font-size: 1.8rem !important;
+}
+
+
+
+@media (max-width: 720px) {
+    .title {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .detailContent {
+        width: 100% !important;
+        overflow-x: auto;
+        padding: 0 10px;
+    }
+    .backgroundImgContainer {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .customContent {
+        width: calc(100% - 90px) !important;
+        margin-left: 50px;
+        padding: 0 0px;
+    }
+    .confirmCreate {
+        width: 90%;
+    }
+    .customContent {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .controlButtonContainer {
+        left: 2px;
+    }
+}

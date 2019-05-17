@@ -1,0 +1,76 @@
+.navContainer {
+    position: relative;
+    width: 100%;
+    left:0;
+    top:0;
+    height: 100px;
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.addBoxShadow {
+    box-shadow: 0 5px 15px 2px #eee;
+}
+
+.navContainer nav {
+    position: relative;
+    top: 30%;
+    width: 86%;
+    margin: 0 7%;
+}
+
+.title {
+    display: inline-block;
+    height:100%;
+    cursor: pointer;
+}
+
+.title > span, .title > b {
+    display: inline-block;
+    letter-spacing: -0.003em;
+    height: 100%;
+    font-size: 2rem;
+    color: #cf5a5f;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.navContainer nav ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    list-style: none;
+}
+
+.navContainer nav ul li {
+    float: left;
+    margin-left: 1rem;
+}
+
+
+
+.navContainer nav ul a {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #111;
+}
+
+.navContainer nav ul a:hover {
+    color: #cf5a5f;
+}
+
+.navContainer nav ul span {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #111;
+    cursor: pointer;
+}
+
+.navContainer nav ul span:hover {
+    color: #cf5a5f;
+}

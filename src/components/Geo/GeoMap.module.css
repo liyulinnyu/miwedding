@@ -1,0 +1,67 @@
+.buttonContainer {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: calc(20px + 2vw);
+}
+
+.buttonContainer > button {
+    border: 1px solid rgba(50, 50, 50, 0.5);
+    background-color: rgba(50, 50, 50, 0.5);
+    width: calc(20px + 1vw);
+    height: calc(20px + 1vw);
+    margin-top: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.buttonContainer > button:hover {
+    background-color: rgba(50, 50, 50, 0.7);
+}
+
+.cityInfoContainer {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 750px) {
+    .cityInfoContainer {
+        font-size: 10px;
+    }
+}
+@media (max-width: 500px) {
+    .cityInfoContainer > span {
+        display: none;
+    }
+}
+
+.cityInfoContainer > div:first-child > p {
+    font-weight: bold;
+    color: #333;
+    margin-left: 5px;
+}
+
+.cityInfoContainer > div, .cityInfoContainer >span {
+    font-size: 1.2em;
+}
+
+.cityInfoContainer > div > p, .cityInfoContainer > span > p {
+    font-size: 0.9em;
+}
+
+.cityInfoContainer > span {
+    margin-right: 5px;
+}
+
+.cityInfoContainer p {
+    display: inline-block;
+    font-size: 0.9em;
+    text-align: center;
+}
