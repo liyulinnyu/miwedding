@@ -4,6 +4,7 @@ import classes from './Navigation.module.css';
 import {connect} from 'react-redux';
 import {logoutActionHandler} from '../../actions/logoutAction';
 import {withRouter} from 'react-router-dom';
+import MobileNav from './MobileNav/MobileNav';
 
 const Navigation = (props) => {
 
@@ -29,6 +30,10 @@ const Navigation = (props) => {
 
     const [cur_url, changeUrl] = useState('/');
 
+    const [showMobileNav, showMobileNavHandler] = useState(false);
+
+    const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
+
     useEffect(() => {
         if (window) {
             if (window.location.href.indexOf('/viewWedding') > -1) {
@@ -37,9 +42,20 @@ const Navigation = (props) => {
                 container.current.className = `${classes.navContainer} ${classes.addBoxShadow}`;
             }
         }
+
+        window.addEventListener('resize', closeMobileNavHandler, false);
+
+        return () => {
+            window.removeEventListener('resize', closeMobileNavHandler);
+        }
     });
 
-    
+    const closeMobileNavHandler = () => {
+        if (window.innerWidth !== windowWidth && showMobileNav) {
+            showMobileNavHandler(false);
+            windowWidthHandler(window.innerWidth);
+        }
+    }
 
     return (
         <div ref={container}>
@@ -52,7 +68,7 @@ const Navigation = (props) => {
                         -Wedding
                     </span>
                 </div>
-                {!props.current_user && <ul>
+                {!props.current_user && <ul className={classes.deskNav}>
                     <li>
                         <NavLink to='/loginView' >
                             LOG IN
@@ -65,7 +81,7 @@ const Navigation = (props) => {
                     </li>
                 </ul>}
                 {props.current_user && 
-                    <ul>
+                    <ul className={classes.deskNav}>
                         <li>
                             <span onClick={toUserViewHander}>{props.current_user.username}</span>
                         </li>
@@ -74,7 +90,21 @@ const Navigation = (props) => {
                         </li>
                     </ul>
                 }
+                
             </nav>
+
+            <div className={classes.mobileNavControl} onClick={()=>(showMobileNavHandler(!showMobileNav))}>
+                
+            </div>
+
+            {showMobileNav && <div className={classes.mobileNavContainer} 
+                onClick={()=>(showMobileNavHandler(!showMobileNav))}>
+                <MobileNav
+                    current_user={props.current_user}
+                    toUserViewHander={toUserViewHander}
+                    logoutHander={logoutHander}
+                />
+            </div>}
         </div>
     )
 }

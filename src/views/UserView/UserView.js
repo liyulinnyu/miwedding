@@ -8,7 +8,7 @@ import {
     getSavedWeddingActionHandler,
     deleteSingleWeddingActionHandler
 } from '../../actions/userAction';
-
+import {SuccessMessage, ErrorMessage, NormalMessage} from '../../components/Message/Message';
 import Loading from '../../components/Loading/Loading';
 
 class UserView extends Component {
@@ -16,7 +16,12 @@ class UserView extends Component {
         user: null,
         theSameUser : false,
         currentWeddingArray: [],
-        showMineWedding: true
+        showMineWedding: true,
+
+        // show message alert
+        show_success_message: false,
+        show_error_message: false,
+        alert_message: ''
     }
 
     constructor(props) {
@@ -43,7 +48,11 @@ class UserView extends Component {
                 currentWeddingArray: res.user.createdWedding
             })
         } else {
-            alert('error');
+            console.log('error');
+            this.setState({
+                show_error_message: true,
+                alert_message: 'error'
+            })
         }
     }
 
@@ -56,16 +65,21 @@ class UserView extends Component {
                             weddingId: weddingId
                         });
             if (res.signal) {
-                alert('success');
                 this.setState({
                     user: {
                         ...this.state.user,
                         createdWedding: res.createdWedding
                     },
-                    currentWeddingArray: res.createdWedding
+                    currentWeddingArray: res.createdWedding,
+                    show_success_message: true,
+                    alert_message: 'success'
                 })
             } else {
-                alert('error');
+                console.log('error');
+                this.setState({
+                    show_error_message: true,
+                    alert_message: 'error'
+                })
             }
             return;
         } 
@@ -95,10 +109,16 @@ class UserView extends Component {
                     user: {
                         ...this.state.user,
                         image: res.image
-                    }
+                    },
+                    show_success_message: true,
+                    alert_message: 'success'
                 });
             } else {
-                alert('error');
+                console.log('error');
+                this.setState({
+                    show_error_message: true,
+                    alert_message: 'error'
+                })
             }
         }
     }
@@ -127,7 +147,13 @@ class UserView extends Component {
                 user.savedWedding = res.savedWedding;
                 wedding_array = res.savedWedding;
             }
-            else {alert('error')}
+            else {
+                console.log('error');
+                this.setState({
+                    show_error_message: true,
+                    alert_message: 'error'
+                })
+            }
             
             showMineWedding = false;
         }
@@ -160,9 +186,28 @@ class UserView extends Component {
     }
 
 
+    closeMessageHandler = () => {
+        this.setState({
+            show_success_message: false,
+            show_error_message: false
+        })
+    }
+
+
     render() {
         return (
             <React.Fragment>
+            {this.state.show_success_message && 
+                    <SuccessMessage
+                        closeMessageHandler={this.closeMessageHandler}
+                        message={this.state.alert_message} />
+            }
+            {this.state.show_error_message && 
+                    <ErrorMessage
+                        closeMessageHandler={this.closeMessageHandler}
+                        message={this.state.alert_message} />
+            }
+
             {!this.state.user && 
                 <div className={classes.contentLoading}>
                     <Loading />
@@ -196,6 +241,11 @@ class UserView extends Component {
                 </div>
                 <div className={classes.content}>
                     <div className={classes.ownWeddingContainer}>
+                        {this.state.theSameUser && this.state.showMineWedding &&
+                            <button className={classes.toCreateWeddingButton}
+                                onClick={()=>{this.props.history.push('/create-wedding')}}
+                            >{'Share One Wedding'}</button>
+                        }
                         {this.state.currentWeddingArray && 
                             this.state.currentWeddingArray.length > 0 ?
                             this.renderWeddingHander(this.state.currentWeddingArray).map(item => item)

@@ -9,7 +9,8 @@ import {
     removeWeddingDislikeAPI,
     removeWeddingSaveAPI,
     getSearchedWeddingAPI,
-    getCoordinateWeddingAPI
+    getCoordinateWeddingAPI,
+    getRecommendedWeddingAPI
 } from '../api/wedding';
 
 export const createWeddingActionHandler = (args) => async (dispatch, getState) => {
@@ -177,6 +178,23 @@ export const getWeddingCitiesDataActionHandler = () => async (dispatch, getState
             weddings: weddings.getCoordinateWedding,
             signal: 1
         };
+    } catch (err) {
+        console.log(err);
+        return {
+            signal: 0
+        };
+    }
+}
+
+
+export const getRecommendedWeddingActionHandler = () => async (dispatch, getState) => {
+    try {
+        const weddings = await getRecommendedWeddingAPI();
+
+        return {
+            weddings: weddings.getRecommendedWedding,
+            signal: 1
+        }
     } catch (err) {
         console.log(err);
         return {

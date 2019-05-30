@@ -461,6 +461,8 @@ class CreateWeddingView extends Component {
         }, () => {
             // update control button position
             this.updateControlButtonPosition();
+            // remove from this.backgroundImgEl
+            this.backgroundImgEl.current.value = null;
         });
     }
 

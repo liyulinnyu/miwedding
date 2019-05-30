@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import classes from './Carousel.module.css';
 import * as FontAwesome from 'react-icons/lib/fa';
 import {Debounce, Throttle} from 'react-throttle';
+import {connect} from 'react-redux';
+import {getRecommendedWeddingActionHandler} from '../../actions/weddingAction';
+import {withRouter} from 'react-router-dom';
+import Loading from '../Loading/Loading';
 
 class Carousel extends Component {
 
     state = {
-        data: new Array(10).fill(0),
+        data: null,
         leftHideBlockNum:0,
         rightHideBlockNum:0
     }
@@ -17,8 +21,23 @@ class Carousel extends Component {
     }
     
     componentDidMount() {
-        window && window.addEventListener('resize', this.resetCarousel, false);
-        this.resetCarousel();
+        this.getRecommendedWedding();
+    }
+
+    getRecommendedWedding = async () => {
+        const res = await this.props.getRecommendedWeddingActionHandler();
+        if (res.signal) {
+            
+            this.setState({
+                data: res.weddings
+            }, () => {
+                window && window.addEventListener('resize', this.resetCarousel, false);
+                this.resetCarousel();
+            });
+            
+        } else {
+            console.log('err');
+        }
     }
 
     componentWillUnmount() {
@@ -121,9 +140,17 @@ class Carousel extends Component {
         container = null;
     }
 
+
+    toWeddingViewHandler = (weddingId) => {
+        this.props.history.push(`/viewWedding?id=${weddingId}`);
+    }
+
     render() {
         return (
             <div className={classes.container}>
+                {!this.state.data && <div className={classes.carLoading}>
+                            <Loading />
+                        </div>}
                 <span className={`${classes.leftArrow} ${classes.arrowControl}`}>
                         <p onClick={this.leftArrowButtonHandler}>{'<'}</p>
                 
@@ -131,11 +158,14 @@ class Carousel extends Component {
                 <div className={classes.content}>
 
                     <div className={classes.blockContainer}>
-                        {this.state.data.length > 0 && this.state.data.map((item, index) => (
+                        
+                        {this.state.data && this.state.data.map((item, index) => (
 
-                            <div className={classes.blockContent} key={index}>
+                            <div className={classes.blockContent} 
+                                onClick={this.toWeddingViewHandler.bind(this, item._id)}
+                                key={index}>
                                 <div className={classes.blockImg}>
-                                    <img src='https://i.ytimg.com/vi/yLNkT3GwZ2o/maxresdefault.jpg' />
+                                    <img src={item.backgroundImg} />
                                 </div>
                                 <div className={classes.blockPrice}>
                                     <FontAwesome.FaMoney style={{
@@ -144,11 +174,11 @@ class Carousel extends Component {
                                         'width': '30px',
                                         'height':'30px',
                                         'marginRight':'20px'
-                                    }} />{'$135'}
+                                    }} />{`$${item.price}`}
                                 </div>
                                 <div className={classes.blockDes}>
                                     <span>
-                                        {'Best Wedding Website asdasd '}
+                                        {item.weddingTitle}
                                     </span>
                                     <span>
                                         <FontAwesome.FaStar style={{
@@ -172,7 +202,7 @@ class Carousel extends Component {
                                             'marginRight':'10px',
                                             'marginTop':'-3px'
                                         }} />
-                                        {'New York, NY, USA'}
+                                        {`${item.state}, ${item.city}, ${item.country}`}
                                     </span>
                                 </div>
                             </div>
@@ -189,4 +219,6 @@ class Carousel extends Component {
 }
 
 
-export default Carousel;
+export default withRouter(connect(null, {
+    getRecommendedWeddingActionHandler
+})(Carousel));

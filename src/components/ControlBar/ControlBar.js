@@ -3,6 +3,8 @@ import classes from './ControlBar.module.css';
 import countries_states_cities from '../../util/countries_states_cities';
 import * as FontAwesome from 'react-icons/lib/fa';
 import {withRouter} from 'react-router-dom';
+import {SuccessMessage, ErrorMessage, NormalMessage} from '../../components/Message/Message';
+
 class ControlBar extends PureComponent {
 
     state = {
@@ -13,7 +15,12 @@ class ControlBar extends PureComponent {
         maxPrice:null,
         season:null,
         filterNum: 0,
-        states: []
+        states: [],
+
+        // show message alert
+        show_success_message: false,
+        show_error_message: false,
+        alert_message: ''
     }
 
     constructor(props) {
@@ -61,7 +68,7 @@ class ControlBar extends PureComponent {
                 if (this.state.season) {
                     const all_span = document.querySelectorAll(`.${classes.seasonSpan}`);
                     [...all_span].forEach((item) => {
-                        if (item.innerText === this.state.season) {
+                        if (item.innerText.indexOf(this.state.season) > -1) {
                             item.className = `${classes.seasonSpan} ${classes.activeSpan}`;
                         }
                     });
@@ -141,13 +148,30 @@ class ControlBar extends PureComponent {
             maxPrice: null,
             season: null,
             filterNum: 0
-        }, () => {alert('success clear')})
+        }, () => {
+            this.setState({
+                show_success_message: true,
+                alert_message: 'successful clear'
+            });
+        })
+    }
+
+
+    closeMessageHandler = () => {
+        this.setState({
+            show_success_message: false,
+            show_error_message: false
+        })
     }
 
     render() {
         return (
             <React.Fragment>
-                
+                {this.state.show_success_message && 
+                    <SuccessMessage
+                        closeMessageHandler={this.closeMessageHandler}
+                        message={this.state.alert_message} />
+                }
                 <div className={classes.container}>
                     <span onClick={this.doSearchHandler}>
                         <FontAwesome.FaSearch />

@@ -178,3 +178,14 @@
     font-size: 0.8rem;
     color: #777;
 }
+
+
+.carLoading {
+    position: absolute;
+    z-index: 90;
+    background-color: transparent;
+    margin-left: calc(50% - 20px - 5vw);
+    margin-top: calc(0px + 4vw);
+    width: calc(40px + 10vw);
+    height: calc(40px + 10vw);
+}

@@ -8,6 +8,12 @@
     background-color: rgba(200, 200,200,0.5);
 }
 
+@media (max-width: 500px) {
+    .container {
+        margin-top: 0rem;
+    }
+}
+
 .container > span:first-child {
     display: inline-block;
     margin-left: 5vw;

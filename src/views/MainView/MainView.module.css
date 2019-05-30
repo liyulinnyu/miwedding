@@ -244,6 +244,11 @@
     }
 }
 
+@media (max-width: 500px) {
+    .textContainer > span {
+        font-size: 1.2rem;
+    }
+}
 
 
 

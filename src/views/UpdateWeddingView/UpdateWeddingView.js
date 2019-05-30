@@ -14,6 +14,7 @@ import {
 } from '../../actions/weddingAction';
 import country_iso from '../../util/country_iso';
 import test_cities from 'cities.json';
+import {SuccessMessage, ErrorMessage, NormalMessage} from '../../components/Message/Message';
 
 class UpdateWeddingView extends Component {
 
@@ -31,7 +32,12 @@ class UpdateWeddingView extends Component {
         showControlContent: false,
         showLinkEditor: false,
         
-        wedding: null
+        wedding: null,
+
+        // show message alert
+        show_success_message: false,
+        show_error_message: false,
+        alert_message: ''
     }
 
 
@@ -461,11 +467,18 @@ class UpdateWeddingView extends Component {
         const res = await this.props.updateWeddingActionHandler(args);
         if (res.signal) {
             // success
-            alert('success');
-            this.props.history.push(`/viewWedding?id=${this.state.wedding._id}`);
+            this.setState({
+                show_success_message: true,
+                alert_message: 'success'
+            }, () => {
+                setTimeout(()=>(this.props.history.push(`/viewWedding?id=${this.state.wedding._id}`)), 2000);
+            })
         } else {
             // failure
-            alert('error');
+            this.setState({
+                show_error_message: true,
+                alert_message: 'error, cannot update'
+            })
         }
         
     } 
@@ -484,6 +497,8 @@ class UpdateWeddingView extends Component {
             }, () => {
                 // update control button position
                 this.updateControlButtonPosition();
+                // remove from this.backgroundImgEl
+                this.backgroundImgEl.current.value = null;
             });
         }
     }
@@ -497,9 +512,27 @@ class UpdateWeddingView extends Component {
         });
     }
 
+    closeMessageHandler = () => {
+        /*
+        this.setState({
+            show_success_message: false,
+            show_error_message: false
+        })*/
+    }
+
     render() {
         return (
             <React.Fragment>
+            {this.state.show_success_message && 
+                <SuccessMessage
+                    closeMessageHandler={this.closeMessageHandler}
+                    message={this.state.alert_message} />
+            }
+            {this.state.show_error_message && 
+                <ErrorMessage
+                    closeMessageHandler={this.closeMessageHandler}
+                    message={this.state.alert_message} />
+            }
             {this.state.showPreviewPage && <PreviewWedding
                 basicInfo={this.state.basicInfo}
                 customInfo={this.customContentEl.current.innerHTML}
@@ -624,7 +657,7 @@ class UpdateWeddingView extends Component {
                 </div>
                 
                 <button className={classes.confirmCreate} onClick={this.updateWeddingHandler}>
-                    {'CREATE'}
+                    {'UPDATE'}
                 </button>
                 
                 <div className={classes.controlButtonContainer} ref={this.controlButtonEl}>

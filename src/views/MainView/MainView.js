@@ -28,24 +28,28 @@ class MainView extends PureComponent {
             const map = {};
 
             res.weddings.forEach(item => {
-                if (map[item.city] !== undefined) {
-                    let point = map[item.city];
-
-                    map[item.city].price = (point.price * point.num + item.price)/(point.num + 1); 
-                    map[item.city].likes += item.likeUsers.length;
-                    map[item.city].dislikes += item.dislikeUsers.length
-                    map[item.city].num += 1;
-                } else {
-                    map[item.city] = {
-                        'name': item.city,
-                        'coordinates': [parseFloat(item.long), parseFloat(item.lati)],
-                        'num': 1,
-                        'likes': item.likeUsers.length,
-                        'dislikes': item.dislikeUsers.length,
-                        'price': item.price,
-                        'country' : item.country
-                    };
+                if (item.long && item.long.length > 0) {
+                    if (map[item.city] !== undefined) {
+                        let point = map[item.city];
+    
+                        map[item.city].price = (point.price * point.num + item.price)/(point.num + 1); 
+                        map[item.city].likes += item.likeUsers.length;
+                        map[item.city].dislikes += item.dislikeUsers.length
+                        map[item.city].num += 1;
+                    } else {
+                        map[item.city] = {
+                            'name': item.city,
+                            'coordinates': [parseFloat(item.long), parseFloat(item.lati)],
+                            'num': 1,
+                            'state': item.state,
+                            'likes': item.likeUsers.length,
+                            'dislikes': item.dislikeUsers.length,
+                            'price': item.price,
+                            'country' : item.country
+                        };
+                    }
                 }
+                
             });
 
             const arr = [];

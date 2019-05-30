@@ -74,3 +74,52 @@
 .navContainer nav ul span:hover {
     color: #cf5a5f;
 }
+
+.deskNav {
+    display: inline-block;
+}
+
+.mobileNavControl {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    background-color: #cf5a5f;
+    width: 40px;
+    height: 80px;
+    background-clip: content-box;
+    padding: 42px 0 34px 0;
+    margin-top: 10px; 
+    cursor: pointer;
+}
+
+.mobileNavControl::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 34px;
+    background-color: #cf5a5f;
+    width: 40px;
+    height: 4px;
+}
+
+.mobileNavContainer {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    height: auto;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 500px) {
+    .deskNav {
+        display: none;
+    }
+    
+}
+
+@media (min-width: 500px) {
+    .mobileNavControl {
+        display: none;
+    }
+}

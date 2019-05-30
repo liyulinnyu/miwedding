@@ -188,6 +188,21 @@
     color: #fafafa;
 }
 
+
+.toCreateWeddingButton {
+    width: 100%;
+    height: 40px;
+    background-color: #cf5a5f;
+    border: 1px solid #cf5a5f;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.toCreateWeddingButton:hover {
+    background-color: #ca484e;
+}
+
 @media (max-width: 600px) {
     .header > div {
         position: relative;
@@ -209,6 +224,7 @@
         line-height: 15px;
         margin-top: 2rem;
         margin-left: 0px;
+        font-size: 0.7rem;
     }
 
     .ownWeddingContainer {

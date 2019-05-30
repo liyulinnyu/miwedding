@@ -25,3 +25,9 @@ code {
   box-sizing: border-box;
   outline: none;
 }
+
+@media (max-width: 400px) {
+  html, :root {
+    font-size: 14px;
+  }
+}

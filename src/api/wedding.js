@@ -13,6 +13,7 @@ export const createWeddingAPI = async (args) => {
             input: args
         }
     }
+    console.log(args);
     return await postRequest(requestBody);
 }
 
@@ -223,6 +224,7 @@ export const getSearchedWeddingAPI = async (args) => {
                             image
                         },
                         country,
+                        state,
                         price,
                         backgroundImg,
                         weddingTitle,
@@ -256,6 +258,7 @@ export const getCoordinateWeddingAPI = async () => {
                     _id,
                     price,
                     country,
+                    state,
                     city,
                     likeUsers {
                         _id
@@ -265,6 +268,35 @@ export const getCoordinateWeddingAPI = async () => {
                     },
                     long,
                     lati
+                }
+            }
+        `
+    }
+    return await postRequest(requestBody);
+}
+
+
+export const getRecommendedWeddingAPI = async () => {
+    const requestBody = {
+        query: `
+            query {
+                getRecommendedWedding {
+                    _id,
+                    price,
+                    weddingTitle,
+                    country,
+                    state,
+                    city,
+                    backgroundImg,
+                    likeUsers {
+                        _id
+                    },
+                    dislikeUsers {
+                        _id
+                    },
+                    saveUsers {
+                        _id
+                    }
                 }
             }
         `

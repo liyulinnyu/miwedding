@@ -59,7 +59,7 @@ class GeoMap extends Component {
       
     handleCityClick = (city, cor, e) => {
         if (this.state.zoom >= 2) {
-            this.props.history.push(`/searchWedding?country=${city.country}&state=${city.name}&page=0`);
+            this.props.history.push(`/searchWedding?country=${city.country}&state=${city.state}&page=0`);
             return;
         } 
         this.setState({
